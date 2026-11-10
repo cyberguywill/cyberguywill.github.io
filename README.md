@@ -118,4 +118,4 @@ Most scripts are written in Python 3. Ensure you have the following installed:
 
 1. Clone the repository to your local machine:
    ```bash
-   git clone [https://github.com/cyberguywill/CyberSec-Scripts.git](https://github.com/willedwardsjr/CyberSec-Scripts.git)
+   git clone (https://github.com/cyberguywill/CyberSec-Scripts.git)
