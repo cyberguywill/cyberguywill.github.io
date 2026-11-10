@@ -17,7 +17,7 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 - [Automation & OSINT](#3-automation--osint)
 - [Prerequisites](#%EF%B8%8F-prerequisites)
 - [Installation](#-installation)
-- [Usage Examples](#usage-examples)
+- [Usage Examples](#🛠️-usage-examples)
 - [Contributing](#-contributing)
 - [License](#-license)
 
@@ -102,7 +102,7 @@ How to scale for production: If you plan to use this on real-world networks or l
 
 ---
 
-## Usage Examples
+## 🛠️ Usage Examples
 
 - Use the Offical MITRE python library: Instead of hardcording descriptions and tactic names, you can intall mitreattack-python. This allows you to query the actual MITRE STIX database dynamically. If your script detects "T1059.00" you can use the library to pull down the latest mitigations, related threat actors, and descriptions straight from MITRE
 - Support JSON logs: Security logs from SIEMs (like Splunsk or Elastic) or Windows Event Logs are usually exported as JSON. You can modify the analyze_logs function to use
