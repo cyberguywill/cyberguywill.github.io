@@ -13,7 +13,7 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 
 ## 📑 Table of Contents
 - [Script Inventory](#%EF%B8%8F-script-inventory)
-- -[Threat Hunting & Log Analysis()
+- -[Threat Hunting & Log Analysis](#1-threat-hunting--log-analysis)
 - [Prerequisites](#-prerequisites)
 - [Installation](#-installation)
 - [Usage Examples](#-usage-examples)
