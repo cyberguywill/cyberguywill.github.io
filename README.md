@@ -25,6 +25,13 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 
 ### 1. Threat Hunting & Log Analysis
 - **`Automated_Threat_Hunter.py`**: Ingests raw text and JSON logs, using regex signatures to detect indicators of compromise (IoCs) and map them directly to the MITRE ATT&CK framework.
+- --How to scale for production: If you plan to use this on real-world networks or large datasets, you can upgrade this foundational script in three ways
+- - --Use the Offical MITRE python library: Instead of hardcording descriptions and tactic names, you can intall mitreattack-python. This allows you to query the actual
+  - --MITRE STIX database dynamically. If your script detects "T1059.00" you can use the library to pull down the latest mitigations, related threat actors, and descriptions straight
+  - --from MITRE
+  - --Support JSON logs: Security logs from SIEMs (like Splunsk or Elastic) or Windows Event Logs are usually exported as JSON. You can modify the analyze_logs function to use
+  - --Python's json module, allowing you to search specific fields (like CommandLine or EventID) instead full text lines.
+  - --External Rules: Move the DETECTION_RULES dictionary to an external YAML or JSON file so you can update your threat intelligence signatures without modifying the core Python codes.
 - **`evtx_parser.py`**: Extracts and filters critical Windows Event Logs (e.g., Event ID 4624, 4688) for rapid triage during an incident response engagement.
 - -- How it works:
 - - --Context-Aware Extraction:
