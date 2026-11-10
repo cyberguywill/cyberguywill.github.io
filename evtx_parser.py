@@ -1,3 +1,13 @@
+#Setup and Execution
+##Install the parser in the backend: This Script utilizes the high;y perfomant Rust-based wrapper for parsing Windows bianry XML
+###Bash pip install evtx
+##Run a default triage scan: By default, it searches for a curated list of high-fidelity IR events: 4624 (Successful Logon), 4625 (Failed Logon), 4688 (Process Creation),
+##4720 (User Account Created), 7045 (Service Installed), 1102 (Log Cleared)
+###Bash python  evtx_parser.py Sercurity.evtx)
+##Filter specific Event IDs and export: Hunt for specific activities (like process creation) and pipe the full, raw JSON records to a file for ingestion into jw, Splunk, 
+##or Elastic.
+###Bash python evtx_parser.py Security.evtx -i 4688 -o suspicious_processes.jsonl
+
 import argparse
 import json
 import sys
