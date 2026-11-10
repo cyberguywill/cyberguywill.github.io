@@ -27,6 +27,27 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 - **`Automated_Threat_Hunter.py`**: Ingests raw text and JSON logs, using regex signatures to detect indicators of compromise (IoCs) and map them directly to the MITRE ATT&CK framework.
 - **`evtx_parser.py`**: Extracts and filters critical Windows Event Logs (e.g., Event ID 4624, 4688) for rapid triage during an incident response engagement.
 - **`wazuh_react_agent.py`**: A security-focused AI agent utilizing a pure Python ReAct loop configured to query the Wazuh API for automated incident triage.
+- -- Archetecture Breakdown
+- - --Wazuh API client (WazuhClient):
+  - --Standard implementation of the Wazuh v4 API using standard requests. It handles the two-step authentication process (fetching a JWT token via basic auth, then passing it as
+  - --a Bearer token) and contains the programmatic binding (get_agent_info, get_rule_details) that the LLM will call.
+- -- ReAct Loop implemetation (SecurityReActAgent):
+  - --A pure Python implementation of LangChain-style zero-shot ReAct agent. In enforces the Thought -> Action -> Observation pipeline using strict system prompts and regular
+  - --expresions to parse the LLM's output.
+- --The stop sequence hook:
+- - --Notice "stop" ["Observation:"] in the LLM parameters. This forces the LLM to pause generation immediately after declaring the tool it wants to use. Control is yielded back
+  - --to the Python script, which queries the actual Wazuh API, grabs the response, injects it back into the context as the "Observation,: and resumes the loop.
+- --How to run locally with Ollama (air-gapped/on prem)
+- - --Install Ollama and pull a capable model (e.g. ollama run llama3).
+  - --Export your environment variables to point the script at your local instance:
+  - - --Bash
+    - --export OPENAI_BASE_URL="http://127.0.0.1:11434/v1"
+    - --export OPENAI_API_KEY="ollama"
+    - --export WAZUH_API_URL="https://your-wazuh-manager:55000"
+    - --export WAZUH_USER="your_wazuh_api_user"
+    - --export WAZUH_PASSWORD="your_wazah_api_password"
+- --Run the script: python wazuh_react_agent.py
+
 
 ### 2. Network Security
 - **`port_scanner_banner.py`**: A lightweight, multi-threaded TCP port scanner that attempts banner grabbing to identify running services and versions.
