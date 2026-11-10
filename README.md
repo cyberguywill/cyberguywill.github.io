@@ -31,13 +31,7 @@ Ingests raw text and JSON logs, using regex signatures to detect indicators of c
 
 
 - **`evtx_parser.py`**: Extracts and filters critical Windows Event Logs (e.g., Event ID 4624, 4688) for rapid triage during an incident response engagement.
-- -How it works:
-- -Context-Aware Extraction:
-  - - --Rather than just dumping raw XML/JSON to the terminal, the format_event_data function specifically targets the most vital EventData keys based on the Event ID.
-    - --If it spots 4688, it extracts the CommandLine and NewProcessName; if it spots 4624, it grabs TargetUserName and IpAddress.
-- --Resilent Parsing:
--  - --The Windows EVTX schema occassionally wraps attributes (like EventID) or TimeCreated) inside secondary dictionary structures depending on OS version and qualifiers.
-   - --The extract_event_details function normalizes these structures so the script doesn't crash on anomalous log formats.
+
 - **`wazuh_react_agent.py`**: A security-focused AI agent utilizing a pure Python ReAct loop configured to query the Wazuh API for automated incident triage.
 - -- Archetecture Breakdown
 - - --Wazuh API client (WazuhClient):
@@ -110,6 +104,14 @@ Ingests raw text and JSON logs, using regex signatures to detect indicators of c
 - Support JSON logs: Security logs from SIEMs (like Splunsk or Elastic) or Windows Event Logs are usually exported as JSON. You can modify the analyze_logs function to use
 - Python's json module, allowing you to search specific fields (like CommandLine or EventID) instead full text lines.
 - External Rules: Move the DETECTION_RULES dictionary to an external YAML or JSON file so you can update your threat intelligence signatures without modifying the core Python codes.
+
+[evtx parser]
+- How it works:
+  -Context-Aware Extraction:
+  - Rather than just dumping raw XML/JSON to the terminal, the format_event_data function specifically targets the most vital EventData keys based on the Event ID. If it spots 4688, it extracts the CommandLine and NewProcessName; if it spots 4624, it grabs TargetUserName and IpAddress.
+  -Resilent Parsing:
+  -- The Windows EVTX schema occassionally wraps attributes (like EventID) or TimeCreated) inside secondary dictionary structures depending on OS version and qualifiers.
+  --The extract_event_details function normalizes these structures so the script doesn't crash on anomalous log formats.
 
 ## ⚙️ Prerequisites
 
