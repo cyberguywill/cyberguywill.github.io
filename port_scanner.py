@@ -1,3 +1,7 @@
+#Scan a target using defaults (Ports 1-1024, 100 threads)
+##python port_scanner.py 192.168.1.10
+#Scan the full port range using 500 threads with a faster 0.5s timeout
+##python port_scanner.py scanme.nmap.org -s 1 -e 65535 -t 500 -w 0.5
 import socket
 import argparse
 import concurrent.futures
