@@ -15,7 +15,7 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 - [Threat Hunting & Log Analysis](#1-threat-hunting--log-analysis)
 - [Network Security](#2-network-security)
 - [Automation & OSINT](#3-automation--osint)
-- [Prerequisites](#-prerequisites)
+- [Prerequisites](#%EF%B8%8F-prerequisites)
 - [Installation](#-installation)
 - [Usage Examples](#-usage-examples)
 - [Contributing](#-contributing)
