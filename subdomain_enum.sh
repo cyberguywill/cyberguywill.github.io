@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install Dependencies: The script assumes you are running on a penetration testing distribution (like Kali Linux or Parrot OS) or have manually installed these Go/Python-based tools. (# Kali Linux standard installations: sudo apt install amass sublist3r subfinder)
+# Make the script executable: (chmod +x subdomain_enum.sh)
+# Run the wrapper: Provide the root domain you have authorization to test. (./subdomain_enum.sh example.com)
 # ==============================================================================
 # Subdomain Enumeration Wrapper
 # Chains Amass, Sublist3r, and Subfinder to discover subdomains, then deduplicates.
