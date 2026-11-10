@@ -31,10 +31,17 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 ### 2. Network Security
 - **`port_scanner_banner.py`**: A lightweight, multi-threaded TCP port scanner that attempts banner grabbing to identify running services and versions.
 - **`pcap_extractor.py`**: Parses `.pcap` files to extract HTTP requests, DNS queries, and cleartext credentials from network traffic.
-
+- - How it Works
+  - -- Memory Efficiency: Rather than loading the entire .pcap file into RAM using scapy.rdpcap(), the script uses scapy.sniff(offline=..., store=0). This processes the file
+  - --packet-by-packet, allowing you to parse multi-gigabyte captures without crashing your machine.
+  - --Targeted Extraction:
+  - - --HTTP/DNS: Uses Scapy's built-in HTTPRequest and DNSQR layers to cleanly strip the method, URL, and queried domains without wrestling with raw byte offsets.
+    - --Credentials: Since cleartext protocols (FTP, Telnet, HTTP) embed credentials in the raw TCP data layer, the script decodes the scapy.packet.Raw payload and applies highly
+    - --specific Regex patterns to catch USER/PASS commands, URL-encoded POST forms, and base64-encoded basic authentication headers. It automatically decodes the base64 headers for
+    - --you.
 ### 3. Automation & OSINT
 - **`ip_rep_checker.py`**: Automates querying IPs against VirusTotal and AbuseIPDB APIs to determine their reputation score.
-- --How It Works
+- How It Works
 - --Dual Intelligence:
 - --It queries AbuseIPDB for historical reporting, brute-force behavior, and usage context (e.g., Data Center vs. Residential). It simultaneously queries VirusTotal
 - --for malware association and engine detections.
@@ -46,7 +53,7 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 
 
 - **`subdomain_enum.sh`**: A Bash wrapper that chains together multiple OSINT tools (like `Sublist3r` and `Amass`) to discover subdomains for a target scope.
-- - --How It Works:
+- --How It Works:
 - --Tool Chain Addition: Alongside your requested Amass and Sublist3r, I injected Subfinder. Sublist3r is historically great but relies on older scrapers; Subfinder is a modern, highly - --maintained Go-based tool that significantly increases the fidelity of bug bounty and OSINT hunts.
 - --Passive Safety: Amass is executed with the -passive flag. This ensures it only scrapes external OSINT sources (like passive DNS, Certificate Transparency logs, and search engines) - --rather than actively throwing DNS queries or brute-forcing the target, which maintains OPSEC and prevents tipping off defense teams early in the recon phase.
 - --Data Normalization: The script takes the output text files from all three tools, strips out wildcard asterisks (*.), converts everything to lowercase, and uses sort -u to
