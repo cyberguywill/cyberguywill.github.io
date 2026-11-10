@@ -1,3 +1,12 @@
+# Install Dependencies: The script utilizes the standard requests library. 
+### Bash pip install requests
+# Configure API Keys: You must export your API keys as environment variables. This prevents hardcoding credentials into your scripts, which is a major security risk.
+### Bash export VT_API_KEY="your_virustotal_api_key"
+### export ABUSEIPDB_API_KEY="your_abuseipdb_api_key"
+# Check a Single IP
+### Bash python ip_rep_checker.py -i 8.8.8.8
+# Check a list of IPs (Bulk Triage): Create a tetxt file (ips.txt) with one IP per line
+### Bash python ip_rep_checker.py -f ips.txt
 import argparse
 import os
 import sys
