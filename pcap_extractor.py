@@ -1,3 +1,9 @@
+# Install Scapy: This script depends on scapy, a powerful manipultation tool for Python
+### Bash pip install scapy
+# Run the analyzer: Provide the path to your packet capture file. It supports standard .pcap and modern .pcapng formats
+### python pcap_extractor.py capture.pcapng
+# Capture live traffic for testing (optional): If you need a test file, use tcpdump on a linux machine to generate a small PCAP to parse
+### Bash sudo tcpdump -i eth0 -w test.pcap -c 1000
 import argparse
 import re
 import sys
