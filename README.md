@@ -17,7 +17,7 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 - [Automation & OSINT](#3-automation--osint)
 - [Prerequisites](#%EF%B8%8F-prerequisites)
 - [Installation](#-installation)
-- [Usage Examples](#🛠️-usage-examples)
+- [Usage Examples](#%EF%B8%8F-usage-examples)
 - [Contributing](#-contributing)
 - [License](#-license)
 
