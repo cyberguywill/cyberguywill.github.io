@@ -35,6 +35,7 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 ### 3. Automation & OSINT
 - **`ip_rep_checker.py`**: Automates querying IPs against VirusTotal and AbuseIPDB APIs to determine their reputation score.
 - **`subdomain_enum.sh`**: A Bash wrapper that chains together multiple OSINT tools (like `Sublist3r` and `Amass`) to discover subdomains for a target scope.
+  
 
 ---
 
