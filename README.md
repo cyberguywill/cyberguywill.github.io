@@ -104,7 +104,8 @@ Ingests raw text and JSON logs, using regex signatures to detect indicators of c
 ---
 
 ## 🛠️ Usage Examples
-[Automated Threat Hunter](#1-threat-hunting--log-analysis)
+[Automated Threat Hunter](#automated_threat_hunterpy)
+If you want to use this in real-world environments you can sacle it in one of three ways
 - Use the Offical MITRE python library: Instead of hardcording descriptions and tactic names, you can intall mitreattack-python. This allows you to query the actual MITRE STIX database dynamically. If your script detects "T1059.00" you can use the library to pull down the latest mitigations, related threat actors, and descriptions straight from MITRE
 - Support JSON logs: Security logs from SIEMs (like Splunsk or Elastic) or Windows Event Logs are usually exported as JSON. You can modify the analyze_logs function to use
 - Python's json module, allowing you to search specific fields (like CommandLine or EventID) instead full text lines.
