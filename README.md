@@ -26,8 +26,9 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 ## 🛠️ Script Inventory
 
 ### 1. Threat Hunting & Log Analysis
-#### **`Automated_Threat_Hunter.py`**: Ingests raw text and JSON logs, using regex signatures to detect indicators of compromise (IoCs) and map them directly to the MITRE ATT&CK framework.
-How to scale for production: If you plan to use this on real-world networks or large datasets, you can upgrade this foundational script in three ways
+#### **`Automated_Threat_Hunter.py`**: 
+Ingests raw text and JSON logs, using regex signatures to detect indicators of compromise (IoCs) and map them directly to the MITRE ATT&CK framework.
+
 
 - **`evtx_parser.py`**: Extracts and filters critical Windows Event Logs (e.g., Event ID 4624, 4688) for rapid triage during an incident response engagement.
 - -How it works:
