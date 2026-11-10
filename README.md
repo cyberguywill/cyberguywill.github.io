@@ -34,7 +34,23 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 
 ### 3. Automation & OSINT
 - **`ip_rep_checker.py`**: Automates querying IPs against VirusTotal and AbuseIPDB APIs to determine their reputation score.
+- --How It Works
+- --Dual Intelligence:
+- --It queries AbuseIPDB for historical reporting, brute-force behavior, and usage context (e.g., Data Center vs. Residential). It simultaneously queries VirusTotal
+- --for malware association and engine detections.
+- --Rate Limit Management:
+- --The standard free tier for VirusTotal restricts users to 4 requests per minute. When passing a file of IPs via the -f flag, the script automatically
+- --implements a 16-second sleep (-d 16) between iterations to prevent your account from being temporarily banned for hitting the HTTP 429 Too Many Requests threshold.
+- --Safe API Handling:
+- --Extracts metrics natively from the JSON responses and implements standard fallback/error handling in case an API endpoint drops the connection or returns an unexpected schema.
+
+
 - **`subdomain_enum.sh`**: A Bash wrapper that chains together multiple OSINT tools (like `Sublist3r` and `Amass`) to discover subdomains for a target scope.
+- - --How It Works:
+- --Tool Chain Addition: Alongside your requested Amass and Sublist3r, I injected Subfinder. Sublist3r is historically great but relies on older scrapers; Subfinder is a modern, highly - --maintained Go-based tool that significantly increases the fidelity of bug bounty and OSINT hunts.
+- --Passive Safety: Amass is executed with the -passive flag. This ensures it only scrapes external OSINT sources (like passive DNS, Certificate Transparency logs, and search engines) - --rather than actively throwing DNS queries or brute-forcing the target, which maintains OPSEC and prevents tipping off defense teams early in the recon phase.
+- --Data Normalization: The script takes the output text files from all three tools, strips out wildcard asterisks (*.), converts everything to lowercase, and uses sort -u to
+- --mathematically deduplicate the list into a single, clean final_subdomains.txt file ready to be piped into tools like httpx or nmap.
   
 
 ---
