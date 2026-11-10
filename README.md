@@ -57,7 +57,15 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 
 
 ### 2. Network Security
-- **`port_scanner_banner.py`**: A lightweight, multi-threaded TCP port scanner that attempts banner grabbing to identify running services and versions.
+- **`port_scanner.py`**: A lightweight, multi-threaded TCP port scanner that attempts banner grabbing to identify running services and versions.
+- --How it works
+- - --Concurrency: Utilizes Python's concurrent.futures.ThreadPoolExecutor. This avoids the overhead of manually manageing thread queues and allows you to easily throttle
+  - --the aggression of the scan via the -t flag
+  - --Dual-Phase Banner Grabbing:
+  -  - --Passive Listen: The scanner first waits 1.5 seconds for talkative services (like SSH, FTP, SMTP) that automatically broadcast their software version upon connection.
+     - --Active Probe: If nothing is received, it sends a generic HEAD / HTTP/1.0\r\n\r\n request. This forces quiet web servers (HTTP/HTTPS) or tother requests-response services
+     - --to spit back a Server: header or error message identifying themselves.
+  - --Clean Output: Banners are stripped of carriage returns, truncated to 90 characters, and flattened into a single line do the terminal output remains readable.
 - **`pcap_extractor.py`**: Parses `.pcap` files to extract HTTP requests, DNS queries, and cleartext credentials from network traffic.
 - - How it Works
   - -- Memory Efficiency: Rather than loading the entire .pcap file into RAM using scapy.rdpcap(), the script uses scapy.sniff(offline=..., store=0). This processes the file
