@@ -12,7 +12,7 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 ---
 
 ## 📑 Table of Contents
-- [Script Inventory](#-script-inventory)
+- [Script Inventory](#%EF%B8%8F-script-inventory)
 - [Prerequisites](#-prerequisites)
 - [Installation](#-installation)
 - [Usage Examples](#-usage-examples)
