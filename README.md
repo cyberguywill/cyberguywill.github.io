@@ -43,7 +43,7 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 Most scripts are written in Python 3. Ensure you have the following installed:
 - Python 3.8 or higher
 - `pip` (Python package installer)
-- macOS or Unix/Linux environment
+- Windows, macOS or Unix/Linux environment
 
 ---
 
