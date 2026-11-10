@@ -19,7 +19,7 @@ A curated collection of custom Python and Bash scripts designed for threat hunti
 - [Installation](#-installation)
 - [Usage Examples](#%EF%B8%8F-usage-examples)
 - [Contributing](#-contributing)
-- [License](#(https://github.com/cyberguywill/cyberguywill.github.io/blob/cybersecurity/LICENSE))
+- [License](#https://github.com/cyberguywill/cyberguywill.github.io/blob/cybersecurity/LICENSE)
 
 ---
 
